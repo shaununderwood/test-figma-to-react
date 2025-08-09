@@ -11,10 +11,15 @@ type Props = {
   className?: string;
 };
 
+const onPressHandler = (which: ButtonSide) => {
+  // eslint-disable-next-line no-console
+  console.log('BoundaryButtons pressed:', which);
+}
+
 export default function BoundaryButtons({
   leftEnabled = true,
   rightEnabled = true,
-  onPress,
+  onPress = onPressHandler,
   className = '',
 }: Props) {
   function emit(which: ButtonSide) {
