@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect, useCallback } from 'react';
 
 export type BoundaryOption = {
   id: string;
@@ -15,7 +15,9 @@ type Props = {
   totalSteps?: number;
 };
 
-export default function BoundaryQuestion(props: Props) {
+export default React.memo(BoundaryQuestion);
+
+function BoundaryQuestion(props: Props) {
   const {
     question,
     options,
@@ -30,16 +32,37 @@ export default function BoundaryQuestion(props: Props) {
     selectedOptionId
   );
 
+  useEffect(() => { setInternalSelected(selectedOptionId); }, [selectedOptionId]);
+
   const activeId = selectedOptionId ?? internalSelected;
   const clampedProgress = useMemo(
     () => Math.max(0, Math.min(100, Number.isFinite(progressPercent) ? progressPercent : 0)),
     [progressPercent]
   );
 
-  function handleSelect(id: string) {
-    setInternalSelected(id);
+  const handleSelect = useCallback((id: string) => {
+    if (selectedOptionId === undefined) setInternalSelected(id);
     onSelect?.(id);
-  }
+  }, [onSelect, selectedOptionId]);
+
+  const cx = (...c: (string|false|undefined)[]) => c.filter(Boolean).join(' ');
+
+  const OPT_BASE = 'flex justify-center items-center self-stretch h-[44px] w-full rounded-[12px] border-[0.5px] border-solid overflow-hidden transition-colors';
+  const OPT_BORDER = 'border-[rgba(60,60,67,0.3)]';
+  const OPT_ACTIVE = 'bg-[rgba(0,161,154,1)] text-white';
+  const OPT_IDLE = 'bg-[rgba(255,255,255,1)] text-[rgba(0,0,0,1)]';
+
+  const OptionButton = React.memo(({ id, label, active, onPick }:{id:string;label:string;active:boolean;onPick:(id:string)=>void}) => (
+    <button
+      role="radio"
+      aria-checked={active}
+      tabIndex={active ? 0 : -1}
+      onClick={() => onPick(id)}
+      className={cx('bq__option', OPT_BASE, OPT_BORDER, active ? 'bg-[rgba(0,161,154,1)]' : 'bg-[rgba(255,255,255,1)]')}
+    >
+      <span className={cx('bq__option-label','text-[15px] leading-5 text-center', active ? 'text-white' : 'text-[rgba(0,0,0,1)]')}>{label}</span>
+    </button>
+  ));
 
   return (
     <section
@@ -81,32 +104,13 @@ export default function BoundaryQuestion(props: Props) {
         {options.map((opt) => {
           const isActive = activeId === opt.id;
           return (
-            <button
+            <OptionButton
               key={opt.id}
-              type="button"
-              onClick={() => handleSelect(opt.id)}
-              className={[
-                'bq__option',
-                'flex justify-center items-center gap-2 self-stretch h-[44px] w-full',
-                'rounded-[12px] border-[0.5px] border-solid overflow-hidden',
-                'border-[rgba(60,60,67,0.3)]',
-                isActive
-                  ? 'bg-[rgba(0,161,154,1)]'
-                  : 'bg-[rgba(255,255,255,1)]',
-                'transition-colors',
-              ].join(' ')}
-            >
-              <span
-                className={[
-                  'bq__option-label',
-                  'text-[15px] leading-5 text-center',
-                  isActive ? 'text-white' : 'text-[rgba(0,0,0,1)]',
-                  'font-["Plus_Jakarta_Sans",system-ui,-apple-system,"Segoe_UI",Roboto,Helvetica,Arial,sans-serif] font-normal',
-                ].join(' ')}
-              >
-                {opt.label}
-              </span>
-            </button>
+              id={opt.id}
+              label={opt.label}
+              active={isActive}
+              onPick={handleSelect}
+            />
           );
         })}
       </div>
