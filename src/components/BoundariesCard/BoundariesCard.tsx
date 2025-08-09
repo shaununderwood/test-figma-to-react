@@ -1,5 +1,5 @@
 import React from 'react';
-import uidl from '../pages/boundaries-component.json';
+import uidl from '../../pages/boundaries-component.json';
 
 type UIDLNode = any;
 
