@@ -1,0 +1,20 @@
+.op-panel {
+    /* 'w-full h-auto flex flex-col justify-center items-end gap-4 p-4',
+    'rounded-[16px] border border-solid overflow-hidden',
+    'bg-[rgba(243,245,250,1)] border-[rgba(179,183,188,0.33)]', */
+
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem; /* gap-4 */
+  padding: 1rem; /* p-4 */
+  border-radius: 16px; /* rounded-[16px] */
+  border-width: 1px; /* border */
+  border-style: solid; /* border-solid */
+  overflow: hidden; /* overflow-hidden */
+  background-color: rgba(243, 245, 250, 1); /* bg-[rgba(243,245,250,1)] */
+  border-color: rgba(179, 183, 188, 0.33); /* border-[rgba(179,183,188,0.33)] */
+}
