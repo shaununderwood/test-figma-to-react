@@ -1,11 +1,12 @@
 import React from 'react';
-  
+import BoundariesCard from '../components/BoundariesCard';
+
 const Page1: React.FC = () => {
-  return <div>
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  </div>
+  return (
+    <div className="w-full max-w-sm">
+      <BoundariesCard />
+    </div>
+  );
 };
 
 export default Page1;
