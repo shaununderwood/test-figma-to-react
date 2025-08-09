@@ -1,5 +1,5 @@
 import React from 'react';
-import BoundariesCard from '../components/BoundariesCard';
+import BoundariesCard from '../components/BoundariesCard/BoundariesCard';
 import BoundaryQuestionContainer from '../components/BoundaryQuestionContainer';
 import BoundaryButtons from '../components/BoundaryButtons';
 
