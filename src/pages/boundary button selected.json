@@ -1,0 +1,175 @@
+{
+  "hasImages": false,
+  "componentUIDLs": [
+    {
+      "name": "TabButton",
+      "node": {
+        "type": "element",
+        "content": {
+          "elementType": "button",
+          "name": "TabButton",
+          "abilities": {},
+          "style": {
+            "backgroundColor": {
+              "type": "dynamic",
+              "content": {
+                "referenceType": "token",
+                "id": "--dl-color-default-brandaltaqua"
+              }
+            },
+            "width": {
+              "type": "static",
+              "content": "100%"
+            },
+            "height": {
+              "type": "static",
+              "content": "auto"
+            },
+            "display": {
+              "type": "static",
+              "content": "flex"
+            },
+            "justifyContent": {
+              "type": "static",
+              "content": "center"
+            },
+            "alignItems": {
+              "type": "static",
+              "content": "center"
+            },
+            "gap": {
+              "type": "static",
+              "content": "8px"
+            },
+            "flexGrow": {
+              "type": "static",
+              "content": "1"
+            },
+            "alignSelf": {
+              "type": "static",
+              "content": "stretch"
+            },
+            "borderRadius": {
+              "type": "static",
+              "content": "12px"
+            },
+            "borderWidth": {
+              "type": "static",
+              "content": "0.5px"
+            },
+            "borderColor": {
+              "type": "static",
+              "content": "rgba(60, 60, 67, 0.30000001192092896)"
+            },
+            "borderStyle": {
+              "type": "static",
+              "content": "solid"
+            },
+            "overflow": {
+              "type": "static",
+              "content": "hidden"
+            }
+          },
+          "children": [
+            {
+              "type": "element",
+              "content": {
+                "elementType": "text",
+                "semanticType": "span",
+                "name": "text",
+                "referencedStyles": {
+                  "15Regular": {
+                    "type": "style-map",
+                    "content": {
+                      "mapType": "project-referenced",
+                      "referenceId": "15Regular"
+                    }
+                  }
+                },
+                "style": {
+                  "color": {
+                    "type": "dynamic",
+                    "content": {
+                      "referenceType": "token",
+                      "id": "--dl-color-default-white"
+                    }
+                  },
+                  "height": {
+                    "type": "static",
+                    "content": "auto"
+                  },
+                  "textAlign": {
+                    "type": "static",
+                    "content": "center"
+                  },
+                  "lineHeight": {
+                    "type": "static",
+                    "content": "20px"
+                  }
+                },
+                "children": [
+                  {
+                    "type": "static",
+                    "content": "Seller"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "components": {},
+  "usedDesignTokens": {
+    "--dl-color-default-white": {
+      "type": "static",
+      "content": "rgba(255, 255, 255, 1)"
+    },
+    "--dl-color-default-brandaltaqua": {
+      "type": "static",
+      "content": "rgba(0, 161, 154, 1)"
+    }
+  },
+  "usedTextStyles": {
+    "15Regular": {
+      "id": "S:c0322f75e54dfc03cff33fbd79c93bc4173ebb9e,",
+      "type": "reusable-project-style-map",
+      "content": {
+        "fontSize": {
+          "type": "static",
+          "content": "15px"
+        },
+        "fontFamily": {
+          "type": "static",
+          "content": "Plus Jakarta Sans"
+        },
+        "fontStyle": {
+          "type": "static",
+          "content": "normal"
+        },
+        "fontWeight": {
+          "type": "static",
+          "content": "400px"
+        },
+        "fontStretch": {
+          "type": "static",
+          "content": "normal"
+        },
+        "letterSpacing": {
+          "type": "static",
+          "content": "0px"
+        }
+      }
+    }
+  },
+  "usedClasses": {},
+  "globals": {
+    "settings": {
+      "title": "exported project",
+      "language": "english"
+    },
+    "meta": [],
+    "assets": []
+  }
+}
