@@ -1,6 +1,6 @@
 import React from 'react';
 import BoundariesCard from '../components/BoundariesCard/BoundariesCard';
-import BoundaryQuestionContainer from '../components/BoundaryQuestionContainer';
+import BoundaryQuestionContainer from '../components/BoundaryQuestion/BoundaryQuestionContainer';
 import BoundaryButtons from '../components/BoundaryButtons';
 
 const Page1: React.FC = () => {
