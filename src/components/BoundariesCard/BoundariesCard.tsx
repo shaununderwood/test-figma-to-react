@@ -1,6 +1,4 @@
-import React, { useMemo } from 'react';
-import uidl from '../../pages/boundaries-component.json';
-import { findImageByName } from '../utils/uidl';
+import React from 'react';
 import defaultCardImage from './default-card-image.png';
 import playButtonImage from './play-button.svg';
 
