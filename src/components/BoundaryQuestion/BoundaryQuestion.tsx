@@ -12,6 +12,7 @@ type Props = {
   selectedOptionId?: string;
   onSelect?: (optionId: string) => void;
   currentStep?: number;
+  currentStepLabel?: string;
   totalSteps?: number;
 };
 
@@ -25,6 +26,7 @@ function BoundaryQuestion(props: Props) {
     selectedOptionId,
     onSelect,
     currentStep,
+    currentStepLabel,
     totalSteps,
   } = props;
 
@@ -71,7 +73,7 @@ function BoundaryQuestion(props: Props) {
     >
       <div className="bq__question w-full flex items-start gap-4 px-4">
         <span className="bq__number text-[20px] leading-[25px]">
-          {currentStep ? `${currentStep}.` : ''}
+          {currentStepLabel ? `${currentStepLabel}.` : ''}
         </span>
         <span className="bq__text text-[16px] leading-[23px] text-left flex-1 font-semibold">
           {question}

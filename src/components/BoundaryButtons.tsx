@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactComponent as IconLeft } from './icon-double-arrow-left.svg';
 import { ReactComponent as IconOverview } from './icon-overview.svg';
 
-type ButtonSide = 'left' | 'center' | 'right';
+export type ButtonSide = 'left' | 'center' | 'right';
 
 type Props = {
   leftEnabled?: boolean;
