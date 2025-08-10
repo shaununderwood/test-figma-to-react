@@ -49,8 +49,6 @@ function BoundaryQuestion(props: Props) {
 
   const OPT_BASE = 'flex justify-center items-center self-stretch h-[44px] w-full rounded-[12px] border-[0.5px] border-solid overflow-hidden transition-colors';
   const OPT_BORDER = 'border-[rgba(60,60,67,0.3)]';
-  const OPT_ACTIVE = 'bg-[rgba(0,161,154,1)] text-white';
-  const OPT_IDLE = 'bg-[rgba(255,255,255,1)] text-[rgba(0,0,0,1)]';
 
   const OptionButton = React.memo(({ id, label, active, onPick }:{id:string;label:string;active:boolean;onPick:(id:string)=>void}) => (
     <button
@@ -58,49 +56,29 @@ function BoundaryQuestion(props: Props) {
       aria-checked={active}
       tabIndex={active ? 0 : -1}
       onClick={() => onPick(id)}
-      className={cx('bq__option', OPT_BASE, OPT_BORDER, active ? 'bg-[rgba(0,161,154,1)]' : 'bg-[rgba(255,255,255,1)]')}
+      className={cx('bq__option', OPT_BASE, OPT_BORDER)}
     >
-      <span className={cx('bq__option-label','text-[15px] leading-5 text-center', active ? 'text-white' : 'text-[rgba(0,0,0,1)]')}>{label}</span>
+      <span className={cx('bq__option-label', 'text-[15px] leading-5 text-center')}>
+        {label}
+      </span>
     </button>
   ));
 
   return (
     <section
-      className={[
-        'bq',
-        'w-full h-auto flex flex-col justify-between items-center gap-4',
-        'px-4 py-6',
-        'rounded-[16px] border border-solid overflow-hidden',
-        'bg-[rgba(243,245,250,1)] border-[rgba(179,183,188,0.33)]',
-      ].join(' ')}
+      className="bq op-panel"
       aria-label="Boundary question"
     >
-      <div className={[
-        'bq__question',
-        'w-full flex items-start gap-4 px-4',
-      ].join(' ')}>
-        <span className={[
-          'bq__number',
-          'text-[20px] leading-[25px] text-[rgba(23,23,23,1)]',
-          'font-["Plus_Jakarta_Sans",system-ui,-apple-system,"Segoe_UI",Roboto,Helvetica,Arial,sans-serif] font-normal',
-        ].join(' ')}>
+      <div className="bq__question w-full flex items-start gap-4 px-4">
+        <span className="bq__number text-[20px] leading-[25px]">
           {currentStep ? `${currentStep}.` : ''}
         </span>
-        <span className={[
-          'bq__text',
-          'text-[16px] leading-[23px] text-left flex-1',
-          'text-[rgba(23,23,23,1)]',
-          'font-["Plus_Jakarta_Sans",system-ui,-apple-system,"Segoe_UI",Roboto,Helvetica,Arial,sans-serif] font-semibold',
-        ].join(' ')}>
+        <span className="bq__text text-[16px] leading-[23px] text-left flex-1 font-semibold">
           {question}
         </span>
       </div>
 
-      <div className={[
-        'bq__options',
-        // Layout like the first image: 2x2 grid within 327x96 container
-        'w-[327px] h-[96px] grid grid-cols-2 grid-rows-2 gap-2 px-4 shrink-0',
-      ].join(' ')}>
+      <div className="bq__options w-full h-full grid grid-cols-2 grid-rows-2 gap-2 px-4 shrink-0">
         {options.map((opt) => {
           const isActive = activeId === opt.id;
           return (
@@ -115,13 +93,10 @@ function BoundaryQuestion(props: Props) {
         })}
       </div>
 
-      <div className={[
-        'bq__progress',
-        'w-full flex flex-col items-start',
-      ].join(' ')}>
+      <div className="bq__progress w-full flex flex-col items-start">
         <div className={[
           'bq__progressbar',
-          'w-[338px] h-11 flex items-start gap-[7px] px-4 relative self-stretch',
+          'w-full h-11 flex items-start gap-[7px] px-4 relative self-stretch',
         ].join(' ')}>
           <div className={[
             'bq__progress-track',
@@ -132,7 +107,7 @@ function BoundaryQuestion(props: Props) {
               className={[
                 'bq__progress-fill',
                 'h-1 rounded-full',
-                'bg-[rgba(0,161,154,1)]',
+                'background-color-active',
                 'transition-all',
               ].join(' ')}
               style={{ width: `${clampedProgress}%` }}
@@ -147,7 +122,7 @@ function BoundaryQuestion(props: Props) {
             <span className={[
               'bq__step-text',
               'text-[15px] leading-5 text-right self-stretch',
-              'text-[rgba(0,161,154,1)]',
+              'text-color-active',
               'font-["SF_Pro","Plus_Jakarta_Sans",system-ui,-apple-system,"Segoe_UI",Roboto,Helvetica,Arial,sans-serif] font-semibold',
             ].join(' ')}>
               {currentStep} of {totalSteps}
