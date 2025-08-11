@@ -11,7 +11,8 @@ jobs:
     steps:
       - name: Send full GitHub Actions payload to webhook
         run: |
-          curl -X POST http://localhost:3040/webhook \
+          curl -X POST https://runner.sunderwood.co.uk/webhook \
             -H "Content-Type: application/json" \
+            -H "X-Webhook-Key: dbc1b37158c654023ecd05ab4a56987c1fdf7086d7b0239c8f0d3ddbfad7f366" \
             --data-binary @"$GITHUB_EVENT_PATH"
 
